@@ -95,29 +95,7 @@ fun SingleMediaPicker() {
         }
 
         selectedUri?.let { uri ->
-            val context = LocalContext.current
-            val imageLoader = ImageLoader.Builder(context)
-                .components {
-                    add(VideoFrameDecoder.Factory())
-                    if (Build.VERSION.SDK_INT >= 28) {
-                        add(ImageDecoderDecoder.Factory())
-                    } else {
-                        add(GifDecoder.Factory())
-                    }
-                }
-                .build()
-            val painter = rememberAsyncImagePainter(
-                model = ImageRequest.Builder(context)
-                    .data(uri)
-                    .size(Size.ORIGINAL)
-                    .videoFrameMillis(1000)
-                    .build(),
-                imageLoader = imageLoader
-            )
-            Image(
-                painter = painter,
-                contentDescription = null,
-            )
+            CoilContentUriView(uri)
         }
     }
 }
