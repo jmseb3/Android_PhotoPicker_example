@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                    Column {
-                       SingleMediaPicker()
+                       MultipleMediaPicker()
                    }
                 }
             }
